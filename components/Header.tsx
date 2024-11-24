@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { StickyHeader } from './StickyHeader'
+import StickyHeader from './StickyHeader'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -26,11 +26,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const mainHeader = document.getElementById('main-header')
-      if (mainHeader) {
-        const mainHeaderBottom = mainHeader.getBoundingClientRect().bottom
-        setShowStickyHeader(mainHeaderBottom < 0)
-      }
+      const scrollPosition = window.scrollY
+      setShowStickyHeader(scrollPosition > 50) // Show after 100px of scrolling
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -39,7 +36,7 @@ export default function Header() {
 
   return (
     <>
-      <header id="main-header" className={` shadow-md  bg-white ${mobileMenuOpen ? 'relative z-40' : ' sticky top-0 z-[10000000]'}`}>
+      <header id="main-header" className={`shadow-md bg-white ${mobileMenuOpen ? 'relative z-40' : 'relative z-[10000000]'}`}>
         <nav className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl font-semibold text-gray-800">
