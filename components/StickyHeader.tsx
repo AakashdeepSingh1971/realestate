@@ -25,11 +25,11 @@ export default function StickyHeader({ show }: StickyHeaderProps) {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0  bg-white  z-[100000] transition-transform duration-300 ease-in-out  transform ${isVisible ? 'translate-y-0' : '-translate-y-full'
+            className={`fixed top-0 left-0 right-0 md:bg-transparent bg-gradient-to-b from-white from-60% bg-white  z-[100000] transition-transform duration-300 ease-in-out  transform ${isVisible ? 'translate-y-0' : '-translate-y-full'
 
                 }`}
         >
-            <nav className="container mx-auto px-6 py-3">
+            <nav className="container mx-auto px-6 py-3  md:my-2 md:rounded-3xl">
                 <div className="flex justify-between items-center ">
                     <Link href="/" className="text-2xl font-semibold text-gray-800">
                         Serenity Estates
